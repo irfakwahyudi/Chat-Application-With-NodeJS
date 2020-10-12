@@ -1,0 +1,21 @@
+syntax = "proto3";
+ 
+package app; 
+ 
+service Chat { 
+//Layanan Chat yang digunakan klien
+    rpc join(stream Message) returns (stream Message){}
+    rpc send(Message) returns (Message){}
+    rpc user(User) returns (Message) {}
+}
+ 
+message Message { 
+//Informasi yang diteruskan antara klien dan layanan
+    string user = 1;
+    string text = 2;
+}
+
+message User {
+//Pesan User
+  string username = 1;
+}
